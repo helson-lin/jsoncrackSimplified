@@ -1,0 +1,15 @@
+{
+  "name": "jsoncracksimplifiedcommunity",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "docker buildx build --platform linux/amd64,linux/arm64 -t  h55205l/jsoncrack:latest . --push ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jsoncrack"
+  ],
+  "author": "helsonlin",
+  "license": "MIT",
+  "description": ""
+}
