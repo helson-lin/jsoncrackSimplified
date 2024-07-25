@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-
-User-agent: *
-Disallow: /*?*
-Disallow: /sign-in
-Disallow: /sign-up
-Disallow: /forgot-password
-Disallow: /widget
