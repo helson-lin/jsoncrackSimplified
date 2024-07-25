@@ -13,7 +13,7 @@ export const TreeView = () => {
     <>
       <JSONTree
         hideRoot
-        data={JSON.parse(json)}
+        data={JSON.parse(json || "{}")}
         valueRenderer={(valueAsString, value) => <Value {...{ valueAsString, value }} />}
         labelRenderer={(keyPath, nodeType) => <Label {...{ keyPath, nodeType }} />}
         theme={{

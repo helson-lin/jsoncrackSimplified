@@ -21,7 +21,6 @@ import { IoCheckmarkCircle } from "react-icons/io5";
 // import { PiChats } from "react-icons/pi";
 import { VscArrowRight, VscLinkExternal } from "react-icons/vsc";
 import Layout from "src/layout/Layout";
-import { gaEvent } from "src/lib/utils/gaEvent";
 
 export const PRICING = {
   MONTHLY: 9,
@@ -248,7 +247,7 @@ export const PricingCards = () => {
           <Button
             component="a"
             color="#2ba80f"
-            onClick={() => gaEvent("Pricing", "click upgrade premium")}
+            onClick={() => {}}
             href={isMonthly ? purchaseLinks.monthly : purchaseLinks.annual}
             target="_blank"
             size="lg"

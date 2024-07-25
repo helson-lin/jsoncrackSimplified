@@ -6,7 +6,6 @@ import { CgChevronDown } from "react-icons/cg";
 import { VscExpandAll, VscCollapseAll, VscTarget } from "react-icons/vsc";
 import { ViewMode } from "src/enums/viewMode.enum";
 import useToggleHide from "src/hooks/useToggleHide";
-import { gaEvent } from "src/lib/utils/gaEvent";
 import { getNextDirection } from "src/lib/utils/getNextDirection";
 import useGraph from "src/modules/GraphView/stores/useGraph";
 import useConfig from "src/store/useConfig";
@@ -65,7 +64,7 @@ export const ViewMenu = () => {
   return (
     <Menu shadow="md" closeOnItemClick={false} withArrow>
       <Menu.Target>
-        <Styles.StyledToolElement onClick={() => gaEvent("View Menu", "open menu")}>
+        <Styles.StyledToolElement onClick={() => {}}>
           <Flex align="center" gap={3}>
             View <CgChevronDown />
           </Flex>
@@ -78,7 +77,6 @@ export const ViewMenu = () => {
           value={viewMode}
           onChange={e => {
             setViewMode(e as ViewMode);
-            gaEvent("View Menu", "change view mode", e as string);
           }}
           data={[
             { value: ViewMode.Graph, label: "Graph" },
@@ -93,7 +91,6 @@ export const ViewMenu = () => {
               fz={12}
               onClick={() => {
                 toggleDirection();
-                gaEvent("View Menu", "rotate layout");
               }}
               leftSection={<Styles.StyledFlowIcon rotate={rotateLayout(direction || "RIGHT")} />}
               rightSection={
@@ -108,7 +105,6 @@ export const ViewMenu = () => {
               fz={12}
               onClick={() => {
                 toggleExpandCollapseGraph();
-                gaEvent("View Menu", "expand collapse graph");
               }}
               leftSection={graphCollapsed ? <VscExpandAll /> : <VscCollapseAll />}
               rightSection={

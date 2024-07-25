@@ -15,7 +15,6 @@ import {
 } from "@mantine/core";
 import { IoMdArrowForward } from "react-icons/io";
 import { IoCheckmarkCircle } from "react-icons/io5";
-import { gaEvent } from "src/lib/utils/gaEvent";
 import { PRICING } from "src/pages/pricing";
 import useUser from "src/store/useUser";
 
@@ -43,7 +42,6 @@ export const UpgradeModal = ({ opened, onClose }: ModalProps) => {
       link.searchParams.append("checkout[name]", user.user_metadata.display_name);
     }
 
-    gaEvent("Premium Modal", "click select", plan);
     window.open(link.toString(), "_blank");
   };
 

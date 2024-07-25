@@ -12,7 +12,6 @@ import { CustomNode } from "src/modules/GraphView/CustomNode";
 import useGraph from "src/modules/GraphView/stores/useGraph";
 import useConfig from "src/store/useConfig";
 import { CustomEdge } from "./CustomEdge";
-import { NotSupported } from "./NotSupported";
 
 const StyledEditorWrapper = styled.div<{ $widget: boolean; $showRulers: boolean }>`
   position: absolute;
@@ -135,12 +134,9 @@ const GraphCanvas = ({ isWidget }: GraphProps) => {
   );
 };
 
-const SUPPORTED_LIMIT = 600;
-
 export const GraphView = ({ isWidget = false }: GraphProps) => {
   const setViewPort = useGraph(state => state.setViewPort);
   const viewPort = useGraph(state => state.viewPort);
-  const aboveSupportedLimit = useGraph(state => state.nodes.length > SUPPORTED_LIMIT);
   const loading = useGraph(state => state.loading);
   const gesturesEnabled = useConfig(state => state.gesturesEnabled);
   const rulersEnabled = useConfig(state => state.rulersEnabled);
@@ -177,10 +173,6 @@ export const GraphView = ({ isWidget = false }: GraphProps) => {
   const debouncedOnZoomChangeHandler = debounce(() => {
     setViewPort(viewPort!);
   }, 300);
-
-  if (aboveSupportedLimit) {
-    return <NotSupported />;
-  }
 
   return (
     <>

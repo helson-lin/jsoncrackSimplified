@@ -29,7 +29,6 @@ import { FaTrash } from "react-icons/fa";
 import { SlOptionsVertical } from "react-icons/sl";
 import { VscAdd } from "react-icons/vsc";
 import type { FileFormat } from "src/enums/file.enum";
-import { gaEvent } from "src/lib/utils/gaEvent";
 import { documentSvc } from "src/services/document.service";
 import type { File } from "src/store/useFile";
 import useFile from "src/store/useFile";
@@ -127,7 +126,6 @@ export const CloudModal = ({ opened, onClose }: ModalProps) => {
         if (error) throw new Error(error.message);
 
         if (data[0]) setFile(data[0]);
-        gaEvent("Cloud Modal", "open file");
       } catch (error) {
         if (error instanceof Error) toast.error(error.message);
       } finally {
@@ -147,7 +145,6 @@ export const CloudModal = ({ opened, onClose }: ModalProps) => {
 
         await refetch();
         toast.success(`Deleted ${file.name}!`, { id: "delete-file" });
-        gaEvent("Cloud Modal", "delete file");
       } catch (error) {
         if (error instanceof Error) {
           toast.error(error.message, { id: "delete-file" });

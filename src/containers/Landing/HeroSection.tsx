@@ -2,7 +2,6 @@ import React from "react";
 import { Stack, Flex, Badge, Button } from "@mantine/core";
 import styled from "styled-components";
 import { MdChevronRight } from "react-icons/md";
-import { gaEvent } from "src/lib/utils/gaEvent";
 
 const StyledHeroSection = styled.main`
   position: relative;
@@ -137,7 +136,7 @@ export const HeroSection = () => {
               Get Started
             </Button>
             <Button
-              onClick={() => gaEvent("Hero Section", "click upgrade premium")}
+              onClick={() => {}}
               component="a"
               variant="default"
               href="/#premium"

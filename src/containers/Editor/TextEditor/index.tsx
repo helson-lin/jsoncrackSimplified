@@ -19,6 +19,25 @@ const editorOptions = {
   },
 };
 
+const getClipboardText = async (): Promise<string | null> => {
+  try {
+    const text = await navigator.clipboard.readText();
+    return text;
+  } catch (err) {
+    console.error("Read clipboard error:", err);
+    return null;
+  }
+};
+
+const isJsonString = (data: string) => {
+  try {
+    JSON.parse(data);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
 const TextEditor = () => {
   const monaco = useMonaco();
   const contents = useFile(state => state.contents);
@@ -64,6 +83,14 @@ const TextEditor = () => {
     };
   }, [getHasChanges]);
 
+  React.useEffect(() => {
+    (document.activeElement as any)?.focus();
+    getClipboardText().then((data: string | null) => {
+      if (!data) return;
+      if (!isJsonString(data)) return;
+      setContents({ contents: data, skipUpdate: false });
+    });
+  }, [getHasChanges, setContents]);
   return (
     <StyledEditorWrapper>
       <StyledWrapper>

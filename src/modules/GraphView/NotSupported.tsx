@@ -3,7 +3,6 @@ import { Button, Title } from "@mantine/core";
 import styled from "styled-components";
 import { MdChevronRight } from "react-icons/md";
 import { JSONCrackLogo } from "src/layout/JsonCrackLogo";
-import { gaEvent } from "src/lib/utils/gaEvent";
 import useModal from "src/store/useModal";
 
 const StyledNotSupported = styled.div`
@@ -171,7 +170,6 @@ export const NotSupported = () => {
 
         <Button
           onClick={() => {
-            gaEvent("Premium View", "click upgrade premium");
             setVisible("upgrade")(true);
           }}
           mt="lg"

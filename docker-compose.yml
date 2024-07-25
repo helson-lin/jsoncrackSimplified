@@ -1,9 +1,11 @@
-version: '3.9'
+version: "3.9"
 services:
   jsoncrack:
     image: jsoncrack
-    container_name: jsoncrack
-    build: 
+    labels:
+      - dev.json.com=foo.local,bar.local
+    container_name: json
+    build:
       context: .
       dockerfile: Dockerfile
     ports:

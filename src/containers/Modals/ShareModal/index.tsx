@@ -13,7 +13,6 @@ import {
 } from "@mantine/core";
 import { FiExternalLink } from "react-icons/fi";
 import { MdCheck, MdCopyAll } from "react-icons/md";
-import { gaEvent } from "src/lib/utils/gaEvent";
 
 export const ShareModal = ({ opened, onClose }: ModalProps) => {
   const { query } = useRouter();
@@ -37,7 +36,6 @@ export const ShareModal = ({ opened, onClose }: ModalProps) => {
                     color={copied ? "teal" : "gray"}
                     onClick={() => {
                       copy();
-                      gaEvent("Share Modal", "copy");
                     }}
                   >
                     {copied ? <MdCheck size="1rem" /> : <MdCopyAll size="1rem" />}
